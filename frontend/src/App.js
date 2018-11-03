@@ -11,7 +11,7 @@ import ItemDetailPage from './pages/ItemDetailPage';
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div>
           <Route exact path="/" component={ItemListPage} />
           <Route path="/itemDetail" component={ItemDetailPage} />
