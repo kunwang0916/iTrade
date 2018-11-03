@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/iTrade/precache-manifest.c0926980244376e66bd01b4786cdb320.js"
+  "/iTrade/precache-manifest.ff4941caae660c78eb0e3ea4563c95ff.js"
 );
 
 workbox.clientsClaim();
