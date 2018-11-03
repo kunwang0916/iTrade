@@ -24,7 +24,8 @@ class AppHeader extends React.Component {
 
   render () {
     const {
-      classes
+      classes,
+      title,
     } = this.props;
 
     return (
@@ -32,7 +33,7 @@ class AppHeader extends React.Component {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="title" color="inherit" className={classes.flex}>
-              Title
+              {title}
             </Typography>
           </Toolbar>
         </AppBar>
