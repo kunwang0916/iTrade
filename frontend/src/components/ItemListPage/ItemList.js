@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Link
+} from 'react-router-dom';
+import {
   withStyles
 } from 'material-ui/styles';
 import GridList, {
   GridListTile,
   GridListTileBar
 } from 'material-ui/GridList';
-import Subheader from 'material-ui/List/ListSubheader';
 import IconButton from 'material-ui/IconButton';
 import InfoIcon from 'material-ui-icons/Info';
 
@@ -104,18 +106,21 @@ class ItemList extends React.Component {
       <div className={classes.root}>
         <GridList cellHeight={180} className={classes.gridList}>
           {tileData.map(tile => (
-            <GridListTile key={tile.img}>
-              < img src = {"https://material-ui-next.com" + tile.img} alt={tile.title} />
-              <GridListTileBar
-                title={tile.title}
-                subtitle={<span>by: {tile.author}</span>}
-                actionIcon={
-                  <IconButton className={classes.icon}>
-                    <InfoIcon />
-                  </IconButton>
-                }
-              />
-            </GridListTile>
+              <GridListTile key={tile.img}>
+               <Link to='/itemDetail'>
+                <img src = {"https://material-ui-next.com" + tile.img} alt={tile.title}/>
+                <GridListTileBar
+                  title={tile.title}
+                  subtitle={<span>by: {tile.author}</span>}
+                  actionIcon={
+                    <IconButton className={classes.icon}>
+                      <InfoIcon />
+                    </IconButton>
+                  }
+                />
+                </Link>
+              </GridListTile>
+            
           ))}
         </GridList>
       </div>
