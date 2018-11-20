@@ -7,6 +7,7 @@ import {
 import ItemListPage from './pages/ItemListPage';
 import ItemDetailPage from './pages/ItemDetailPage';
 import UserProfilePage from './pages/UserProfilePage';
+import EditProfilePage from './pages/EditProfilePage';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route exact path="/" component={ItemListPage} />
           <Route path="/itemDetail" component={ItemDetailPage} />
           <Route path="/userProfile" component={UserProfilePage} />
+          <Route path="/editProfile" component={EditProfilePage} />
         </div>
       </Router>
     );
