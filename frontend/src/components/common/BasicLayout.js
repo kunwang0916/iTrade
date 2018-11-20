@@ -1,16 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import AppFooter from './AppFooter';
 import AppHeader from './AppHeader';
 
-class BasicLayout extends Component {
+import {
+  Layout
+} from 'antd';
+
+
+class BasicLayout extends React.Component {
   render() {
     const { content, title } = this.props || {};
     return (
-      <React.Fragment style={{minHeight: '100vh'}}>
+      <Layout>
         <AppHeader title={title} />
-        { content }
+        <Layout.Content> {content} </Layout.Content>
         <AppFooter />
-      </React.Fragment>
+      </Layout>
     );
   }
 }

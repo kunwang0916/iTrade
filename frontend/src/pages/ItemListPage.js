@@ -10,7 +10,7 @@ class ItemListPage extends Component {
       </React.Fragment>
     )
     return (
-      <BasicLayout content={content} title={"Home"} />
+      <BasicLayout content={content} title={"iTrade"} />
     );
   }
 }
