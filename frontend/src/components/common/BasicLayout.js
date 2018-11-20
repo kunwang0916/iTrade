@@ -13,7 +13,9 @@ class BasicLayout extends React.Component {
     return (
       <Layout>
         <AppHeader title={title} />
-        <Layout.Content> {content} </Layout.Content>
+        <Layout.Content style={{ margin: 'auto' }}> 
+          {content} 
+        </Layout.Content>
         <AppFooter />
       </Layout>
     );
