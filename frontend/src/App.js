@@ -8,6 +8,8 @@ import ItemListPage from './pages/ItemListPage';
 import ItemDetailPage from './pages/ItemDetailPage';
 import UserProfilePage from './pages/UserProfilePage';
 import EditProfilePage from './pages/EditProfilePage';
+import MyItemsPage from './pages/MyItemsPage';
+import ItemEditPage from './pages/ItemEditPage';
 
 class App extends Component {
   render() {
@@ -18,6 +20,8 @@ class App extends Component {
           <Route path="/itemDetail" component={ItemDetailPage} />
           <Route path="/userProfile" component={UserProfilePage} />
           <Route path="/editProfile" component={EditProfilePage} />
+          <Route path="/myItems" component={MyItemsPage} />
+          <Route path="/editItem" component={ItemEditPage} /> 
         </div>
       </Router>
     );
