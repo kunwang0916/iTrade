@@ -6,7 +6,7 @@ import {
 
 import ItemListPage from './pages/ItemListPage';
 import ItemDetailPage from './pages/ItemDetailPage';
-
+import UserProfilePage from './pages/UserProfilePage';
 
 class App extends Component {
   render() {
@@ -15,6 +15,7 @@ class App extends Component {
         <div>
           <Route exact path="/" component={ItemListPage} />
           <Route path="/itemDetail" component={ItemDetailPage} />
+          <Route path="/userProfile" component={UserProfilePage} />
         </div>
       </Router>
     );

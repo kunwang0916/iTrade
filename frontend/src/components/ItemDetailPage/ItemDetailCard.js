@@ -61,7 +61,7 @@ class ItemDetailCard extends React.Component {
           description={item.description}
         />
         <Divider orientation="left">Seller Info:</Divider>
-        <Link to={'userDetail'}>
+        <Link to={'userProfile'}>
           <Card.Meta
             avatar={<Avatar src={item.user.avatar} />}
             title={item.user.name}
