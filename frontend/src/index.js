@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import FirebaseUtils from './Utils/FirebaseUtils';
+import FirebaseUtils from './utils/FirebaseUtils';
 
 FirebaseUtils.initFirebase();
 
