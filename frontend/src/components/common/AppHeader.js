@@ -11,6 +11,10 @@ import {
 
 class AppHeader extends React.Component {
 
+  handleLogoutClick =()=> {
+    console.log('handleLogoutClick');
+  }
+
   render () {
     const {
       title,
@@ -26,8 +30,11 @@ class AppHeader extends React.Component {
             <Menu.Item >
               <Link to='/myItems'>My Items</Link>
             </Menu.Item>
-            <Menu.Item >
+            <Menu.Item onClick={this.handleLogoutClick}>
               Log Out
+            </Menu.Item>
+            <Menu.Item onClick={this.handleLogoutClick}>
+              <Link to='/signIn'>Sign In </Link>
             </Menu.Item>
           </Menu.SubMenu>
         </Menu>
