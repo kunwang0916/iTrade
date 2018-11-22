@@ -3,8 +3,7 @@ import {
   Form,
   Input,
   Divider,
-  Select, InputNumber, Switch, Radio,
-  Slider, Button, Upload, Icon, Rate,
+  Button, Upload, Icon,
 } from 'antd';
 
 class ItemForm extends React.Component {
@@ -30,8 +29,12 @@ class ItemForm extends React.Component {
 
 
   render() {
-    const { item } = this.props || {};
-    const { previewVisible, previewImage, fileList } = this.state;
+    // const { item } = this.props || {};
+    const { 
+      // previewVisible,
+      // previewImage, 
+      fileList 
+    } = this.state;
     const uploadButton = (
       <div>
         <Icon type="plus" />

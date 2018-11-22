@@ -31,7 +31,7 @@ class ProfileForm extends React.Component {
 
 
   render() {
-    const { item } = this.props || {};
+    // const { item } = this.props || {};
     const formItemLayout = {
       labelCol: { 
         span: 8 
