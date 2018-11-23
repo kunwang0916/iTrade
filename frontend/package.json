@@ -10,6 +10,7 @@
     "gh-pages": "^2.0.1",
     "material-ui": "^1.0.0-beta.47",
     "material-ui-icons": "^1.0.0-beta.36",
+    "query-string": "^6.2.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-firebaseui": "^3.1.2",

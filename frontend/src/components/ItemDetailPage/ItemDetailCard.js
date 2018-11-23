@@ -31,6 +31,20 @@ class ItemDetailCard extends React.Component {
     );
 
     const marginTop = '10pt';
+    let specs = [
+      {
+        label: 'Condition',
+        text: item.condition || 'N/A',
+      },
+      {
+        label: 'Size',
+        text: item.size || 'N/A',
+      },
+      {
+        label: 'Category',
+        text: item.category || 'N/A',
+      },
+    ];
 
     return (
       <Card
@@ -40,13 +54,13 @@ class ItemDetailCard extends React.Component {
       >
         <Divider orientation="left">Item Info:</Divider>
         <Card.Meta
-          title={item.title}
-          description={item.subTitle}
+          title={item.name}
+          description={'$' + item.price}
         />
         <List
           style={{ marginTop: marginTop}}
           bordered
-          dataSource={item.specs || []}
+          dataSource={specs || []}
           renderItem={spec => (
             <List.Item>
               <List.Item.Meta
@@ -69,17 +83,9 @@ class ItemDetailCard extends React.Component {
           <Card.Meta
             avatar={<Avatar src={item.user.avatar} />}
             title={item.user.name}
-            description={item.user.description}
+            description={item.user.city}
           />
         </Card>
-        <Link to={'userProfile'}>
-          <Button type="primary" block
-            style={{ marginTop: marginTop }}
-          >
-            User Details
-          </Button>
-        </Link>
-        
       </Card>
     )
   }
