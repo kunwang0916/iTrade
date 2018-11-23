@@ -12,7 +12,6 @@ import FileUploadUtils from '../../utils/FileUploadUtils';
 class ProfileForm extends React.Component {
   state = {
     imageUploading: false,
-    fileList: [],
   }
 
   handleUploadImage =(file)=> {
@@ -20,18 +19,30 @@ class ProfileForm extends React.Component {
     FileUploadUtils.uploadImage(file, (downloadURL) => {
       this.setState({ 
         imageUploading: false,
-        fileList: [{
-          status: 'done',
-          url: downloadURL,
-          uid: '-1',
-        }],
       });
+
+      const e = {
+        target: {
+          name: 'avatar',
+          value: downloadURL,
+        }
+      }
+      this.hanldeInputChange(e);
     })
   }
 
+  hanldeInputChange =(e)=> {
+    let { profile, onChange } = this.props || {};
+    if (profile && onChange) {
+      const name = e.target.name;
+      const value = e.target.value;
+      profile[name] = value;
+      onChange(profile);
+    }
+  }
 
   render() {
-    // const { item } = this.props || {};
+    const { profile, onSave } = this.props || {};
     const formItemLayout = {
       labelCol: { 
         span: 8 
@@ -69,20 +80,37 @@ class ProfileForm extends React.Component {
       },
     };
 
-    const { imageUploading, fileList } = this.state;
+    let { imageUploading } = this.state;
+    const {
+      name,
+      city,
+      zipcode,
+      email,
+      phone,
+      avatar,
+    } = profile || {}
+
+    let imageList = [];
+    if (avatar && avatar.length > 0) {
+      imageList = [{
+        status: 'done',
+        url: avatar,
+        uid: '-1',
+      }]
+    }
+
     const imageUploaderProps = {
       listType: "picture-card",
       className: "avatar-uploader",
-      fileList: this.state.fileList,
+      fileList: imageList,
       onRemove: (file) => {
-        this.setState(({ fileList }) => {
-          const index = fileList.indexOf(file);
-          const newFileList = fileList.slice();
-          newFileList.splice(index, 1);
-          return {
-            fileList: newFileList,
-          };
-        });
+        const e = {
+          target: {
+            name: 'avatar',
+            value: '',
+          }
+        }
+        this.hanldeInputChange(e);
       },
       beforeUpload: (file) => {
         this.handleUploadImage(file);
@@ -96,49 +124,69 @@ class ProfileForm extends React.Component {
         <div className="ant-upload-text">Upload</div>
       </div>
     )
+
     return (
       <Form onSubmit={this.handleSubmit} layout='horizontal' >
         <Form.Item
           {...formItemLayout}
           label="Name"
         >
-          <Input />
+          <Input name='name'
+            value={name || ''}
+            onChange={this.hanldeInputChange}
+          />
         </Form.Item>
         <Form.Item
           {...formItemLayout}
           label="City"
         >
-          <Input />
+          <Input name='city'
+            value={city || ''}
+            onChange={this.hanldeInputChange}
+          />
         </Form.Item>
         <Form.Item
           {...formItemLayout}
           label="Zipcode"
         >
-          <Input />
+          <Input name='zipcode'
+            value={zipcode || ''}
+            onChange={this.hanldeInputChange}/>
         </Form.Item>
         <Form.Item
           {...formItemLayout}
           label="Email"
         >
-          <Input />
+          <Input name='email'
+            value={email || ''}
+            onChange={this.hanldeInputChange}
+          />
         </Form.Item>
         <Form.Item
           {...formItemLayout}
           label="Phone"
         >
-          <Input />
+          <Input name='phone'
+            value={phone || ''}
+            onChange={this.hanldeInputChange}
+          />
         </Form.Item>
         <Form.Item
           {...formItemLayout}
           label="Avatar"
         >
           <Upload {...imageUploaderProps}>
-            {fileList.length >= 1 ? null : uploadButton}
+            {imageList.length >= 1 ? null : uploadButton}
           </Upload>
           
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">Save</Button>
+          <Button type="primary"
+            onClick={onSave}
+            disabled={imageUploading}
+          >
+          Save
+          </Button>
         </Form.Item>
       </Form>
     );

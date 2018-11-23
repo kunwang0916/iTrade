@@ -1,7 +1,9 @@
 import firebase from "firebase";
 import uuidv1 from "uuid/v1";
 
-const IMAGE_STORAGE_PATH = "image/"
+const IMAGE_STORAGE_PATH = "image/";
+const USER_TABLE_PATH = "users/";
+const ITEM_TABLE_PATH = "items/";
 
 class FirebaseUtils {
 
@@ -45,6 +47,30 @@ class FirebaseUtils {
     });
   }
 
+  static databaseRef(path) {
+    return firebase.database().ref(path);
+  }
+
+  static saveUserProfile(userId, profile) {
+    const path = USER_TABLE_PATH + userId;
+    this.databaseRef(path).set(profile);
+  }
+
+  static loadUserProfile(userId, callback) {
+    const path = USER_TABLE_PATH + userId;
+    this.databaseRef(path).once('value').then(function(snapshot) {
+      const val = snapshot.val();
+      callback(val);
+    })
+  }
+
+  static saveItem(item, id = null) {
+    if (!id) {
+      id = uuidv1()
+    }
+    const path = ITEM_TABLE_PATH + id;
+    this.databaseRef(path).set(item);
+  }
 }
 
 export default FirebaseUtils;
