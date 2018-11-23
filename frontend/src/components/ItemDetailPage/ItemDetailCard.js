@@ -72,7 +72,17 @@ class ItemDetailCard extends React.Component {
         <Divider orientation="left">Seller Info:</Divider>
         <Card
           hoverable={true}
-          actions={[<Icon type="phone" />, <Icon type="message" />, <Icon type="mail" />]}
+          actions={[
+            <a href={"tel: " + item.user.phone}>
+              <Icon type="phone" />
+            </a>,
+            <a href={"sms: " + item.user.phone}>
+              <Icon type="message" />
+            </a>,
+            <a href={"mailto: " + item.user.email}>
+              <Icon type="mail" />
+            </a>
+          ]}
         >
           <Card.Meta
             avatar={<Avatar src={item.user.avatar} />}
