@@ -8,6 +8,7 @@ import {
   Icon,
   Select,
 } from 'antd';
+import FileUploadUtils from '../../utils/FileUploadUtils';
 
 export const ItemFormMode = {
   ADD: 1,
@@ -37,24 +38,26 @@ const CategoryOptions = [
 
 class ItemForm extends React.Component {
   state = {
-    previewVisible: false,
-    previewImage: '',
-    fileList: [{
-      uid: '-1',
-      name: 'xxx.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    }],
+    imageUploading: false,
   };
 
-  handlePreview = (file) => {
-    this.setState({
-      previewImage: file.url || file.thumbUrl,
-      previewVisible: true,
-    });
-  }
+  handleUploadImage = (file) => {
+    this.setState({ imageUploading: true });
+    FileUploadUtils.uploadImage(file, (downloadURL) => {
+      this.setState({
+        imageUploading: false,
+      });
 
-  handleImageChange = ({ fileList }) => this.setState({ fileList })
+      let { item, onChange } = this.props || {};
+      if (item && onChange) {
+        if (!item.images) {
+          item.images = [];
+        }
+        item.images.push(downloadURL);
+        onChange(item);
+      }
+    })
+  }
 
   hanldeInputChange = (e) => {
     let { item, onChange } = this.props || {};
@@ -67,7 +70,6 @@ class ItemForm extends React.Component {
   }
 
   handleSelectorChange =(name, value)=> {
-    console.log('handleSelectorChange', name, value);
     let { item, onChange } = this.props || {};
     if (item && onChange) {
       item[name] = value;
@@ -83,20 +85,48 @@ class ItemForm extends React.Component {
       price,
       condition,
       size,
-      shipping,
       category,
       description,
+      images,
     } = item || {}
 
-    const { 
-      fileList 
-    } = this.state;
+    let imageList = [];
+    if (images) {
+      imageList = images.map((img, index) => {
+        return {
+          status: 'done',
+          url: img,
+          uid: '-' + index,
+        };
+      });
+    }
+
+
+    const imageUploaderProps = {
+      listType: "picture-card",
+      className: "avatar-uploader",
+      fileList: imageList,
+      onRemove: (file) => {
+        let { item, onChange } = this.props || {};
+        if (item && item.images) {
+          item.images = item.images.filter((image) => {
+            return image !== file.url;
+          });
+        }
+        onChange(item);
+      },
+      beforeUpload: (file) => {
+        this.handleUploadImage(file);
+        return false;
+      },
+    };
+
     const uploadButton = (
-      <div>
-        <Icon type="plus" />
+      <div className="avatar-uploader">
+        <Icon type={imageUploading ? 'loading' : 'plus'} />
         <div className="ant-upload-text">Upload</div>
       </div>
-    );
+    )
 
     const formItemLayout = {
       labelCol: {
@@ -217,14 +247,8 @@ class ItemForm extends React.Component {
             {...formItemLayout}
             label="Images"
           >
-            <Upload
-              action="//jsonplaceholder.typicode.com/posts/"
-              listType="picture-card"
-              fileList={fileList}
-              onPreview={this.handlePreview}
-              onChange={this.handleImageChange}
-            >
-              {fileList.length >= 3 ? null : uploadButton}
+            <Upload {...imageUploaderProps}>
+              {imageList.length >= 3 ? null : uploadButton}
             </Upload>
           </Form.Item>
           <Form.Item {...tailFormItemLayout}>
