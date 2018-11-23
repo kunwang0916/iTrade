@@ -16,6 +16,14 @@ class DatabaseUtils {
     FirebaseUtils.saveItem(item, callback);
   }
 
+  static loadItemList(callback) {
+    FirebaseUtils.loadItemList(callback);
+  }
+
+  static loadItem(id, callback) {
+    FirebaseUtils.loadItem(id, callback);
+  }
+
 }
 
 export default DatabaseUtils;

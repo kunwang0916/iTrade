@@ -13,15 +13,15 @@ class ItemListCard extends React.Component {
     } = this.props;
 
     return (
-      <Link to={'itemDetail'}>
+      <Link to={'itemDetail/' + item.id}>
         <Card
           hoverable
           style={{ width: 240 }}
           cover={<img alt="example" src={item.images[0]} />}
         >
           <Card.Meta
-            title={item.title}
-            description={item.subTitle}
+            title={item.name}
+            description={'$' + item.price}
           />
         </Card>
       </Link>
