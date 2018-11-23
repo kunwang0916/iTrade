@@ -23,13 +23,15 @@ class AddItemPage extends Component {
 
   handleItemSave = () => {
     const { item } = this.state || {}
-    DatabaseUtils.saveItem(item);
-    notification.open({
-      message: 'save succeed',
-      description: 'user profile saved.'
-    })
+    DatabaseUtils.saveItem(item, (newItem)=>{
+      notification.open({
+        message: 'save succeed',
+        description: 'user profile saved.'
+      });
+      this.setState({item: newItem})
+    });
   }
-  
+
   render() {
     const { 
       item, 

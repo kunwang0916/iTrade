@@ -3,6 +3,7 @@ import DatabaseUtils from './DatabaseUtils';
 import firebase from 'firebase';
 
 const USER_ID_KEY = 'itrade_user_id';
+const USER_PROFILE_KEY = 'itrade_user_profile';
 
 class AccountUtils {
 
@@ -26,11 +27,22 @@ class AccountUtils {
     localStorage.setItem(USER_ID_KEY, userID);
   }
 
+  static saveProfileToLocal(profile) {
+    localStorage.setItem(USER_PROFILE_KEY, JSON.stringify(profile));
+  }
+
+  static loadProfileFromLocal() {
+    return JSON.parse(localStorage.getItem(USER_PROFILE_KEY) || '{}');
+  }
+
   static updateUserId() {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         // User is signed in.
         AccountUtils.saveUserIDToLocal(user.uid);
+        AccountUtils.loadProfile((profile) => {
+          AccountUtils.saveProfileToLocal(profile);
+        });
       } else {
         console.log('No user is signed in.');
       }

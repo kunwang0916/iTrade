@@ -1,4 +1,5 @@
 import FirebaseUtils from './FirebaseUtils';
+import AccountUtils from './AccountUtils';
 
 class DatabaseUtils {
 
@@ -10,8 +11,9 @@ class DatabaseUtils {
     FirebaseUtils.loadUserProfile(userId, callback);
   }
 
-  static saveItem(item) {
-    FirebaseUtils.saveItem(item);
+  static saveItem(item, callback) {
+    item.user = AccountUtils.loadProfileFromLocal();
+    FirebaseUtils.saveItem(item, callback);
   }
 
 }

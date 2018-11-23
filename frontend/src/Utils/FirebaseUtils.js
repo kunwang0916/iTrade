@@ -11,10 +11,12 @@ class FirebaseUtils {
     // Initialize Firebase
     // TODO: Replace with your project's customized code snippet
     var config = {
-      apiKey: "<API_KEY>",
-      authDomain: "<PROJECT_ID>.firebaseapp.com",
-      databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
-      storageBucket: "<BUCKET>.appspot.com",
+      apiKey: "AIzaSyAj7HZ6tq8eZQh1tbZrGdtjD4O3okTRf0s",
+      authDomain: "itrade-240ec.firebaseapp.com",
+      databaseURL: "https://itrade-240ec.firebaseio.com",
+      projectId: "itrade-240ec",
+      storageBucket: "itrade-240ec.appspot.com",
+      messagingSenderId: "3803212631"
     };
 
     firebase.initializeApp(config);
@@ -64,12 +66,13 @@ class FirebaseUtils {
     })
   }
 
-  static saveItem(item) {
+  static saveItem(item, callback) {
     if (!item.id) {
       item.id = uuidv1()
     }
     const path = ITEM_TABLE_PATH + item.id;
     this.databaseRef(path).set(item);
+    callback(item);
   }
 }
 
