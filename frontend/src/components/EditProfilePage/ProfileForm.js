@@ -126,7 +126,8 @@ class ProfileForm extends React.Component {
     )
 
     return (
-      <Form onSubmit={this.handleSubmit} layout='horizontal' >
+      <Form onSubmit={this.handleSubmit} layout='horizontal'
+        style={{minWidth: '50vw'}}>
         <Form.Item
           {...formItemLayout}
           label="Name"
@@ -182,6 +183,7 @@ class ProfileForm extends React.Component {
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary"
+            block
             onClick={onSave}
             disabled={imageUploading}
           >
