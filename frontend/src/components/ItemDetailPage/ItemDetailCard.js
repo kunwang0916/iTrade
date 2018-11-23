@@ -5,14 +5,8 @@ import {
   Divider,
   Avatar,
   List,
-  Button,
   Icon,
 } from 'antd';
-
-import {
-  Link
-} from 'react-router-dom';
-
 
 class ItemDetailCard extends React.Component {
 

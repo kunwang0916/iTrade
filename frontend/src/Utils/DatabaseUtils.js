@@ -13,7 +13,12 @@ class DatabaseUtils {
 
   static saveItem(item, callback) {
     item.user = AccountUtils.loadProfileFromLocal();
+    item.user.id = AccountUtils.getUserID();
     FirebaseUtils.saveItem(item, callback);
+  }
+
+  static loadItemListByUserId(userId, callback) {
+    FirebaseUtils.loadItemListByUserId(userId, callback);
   }
 
   static loadItemList(callback) {

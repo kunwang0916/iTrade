@@ -83,6 +83,19 @@ class FirebaseUtils {
     })
   }
 
+  static loadItemListByUserId(userId, callback) {
+    this.databaseRef(ITEM_TABLE_PATH).once('value', function (snapshot) {
+      let items = []
+      snapshot.forEach(function (childSnapshot) {
+        const item = childSnapshot.val();
+        if(item && item.user && item.user.id === userId) {
+          items.push(item);
+        }
+      });
+      callback(items);
+    });
+  }
+
   static loadItemList(callback) {
     this.databaseRef(ITEM_TABLE_PATH).once('value', function (snapshot) {
       let items = []
