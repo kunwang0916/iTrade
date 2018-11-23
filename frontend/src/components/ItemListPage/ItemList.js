@@ -2,10 +2,15 @@ import React from 'react';
 import { List } from 'antd';
 import ItemListCard from './ItemListCard';
 
+export const ItemListType = {
+  NORMAL_LIST: 1,
+  MY_LIST: 2,
+}
+
 class ItemList extends React.Component {
 
   render() {
-    const { items } = this.props || [];
+    const { items, type } = this.props || [];
     return (
       <div style={{ maxWidth: 500, display: 'flex', textAlign: 'center' }}>
         <List
@@ -14,7 +19,7 @@ class ItemList extends React.Component {
           dataSource={items}
           renderItem={item => (
             <List.Item>
-              <ItemListCard item={item} />
+              <ItemListCard item={item} type={type} />
             </List.Item>
           )}
         />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BasicLayout from '../components/common/BasicLayout';
-import ItemList from '../components/ItemListPage/ItemList';
+import ItemList, { ItemListType } from '../components/ItemListPage/ItemList';
 import {
   Button,
   Spin,
@@ -45,7 +45,7 @@ class MyItemsPage extends Component {
           </Link>
         </Button>
        
-        {loading ? <Spin /> : <ItemList items={items} />}
+        {loading ? <Spin /> : <ItemList items={items} type={ItemListType.MY_LIST}/>}
       </React.Fragment>
     )
     return (

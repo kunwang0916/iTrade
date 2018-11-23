@@ -54,17 +54,40 @@ class EditItemPage extends Component {
     loading: false,
   }
 
+  componentDidMount() {
+    this.loadItemInfo();
+  }
+
+  loadItemInfo = () => {
+    this.setState({
+      loading: true,
+    });
+    const array = this.props.location.pathname.split('/');
+    const id = array[array.length - 1];
+    DatabaseUtils.loadItem(id, (item) => {
+      this.setState({
+        loading: false,
+        item: item,
+      });
+    })
+  }
+
   handleItemChange = (item) => {
     this.setState({ item });
   }
 
   handleItemSave = () => {
     const { item } = this.state || {}
-    DatabaseUtils.saveItem(item);
-    notification.open({
-      message: 'save succeed',
-      description: 'user profile saved.'
-    })
+    DatabaseUtils.saveItem(item, (newItem)=> {
+      notification.open({
+        message: 'save succeed',
+        description: 'user profile saved.'
+      })
+      this.setState({
+        item: newItem,
+      })
+    });
+    
   }
 
   render() {
@@ -75,10 +98,10 @@ class EditItemPage extends Component {
 
     const content = (
       <React.Fragment>
-        {loading ? <Spin /> : null}
-        <ItemForm item={item} mode={ItemFormMode.EDIT}
+        {loading ? <Spin /> : <ItemForm item={item} mode={ItemFormMode.EDIT}
           onChange={this.handleItemChange}
-          onSave={this.handleItemSave}/>
+          onSave={this.handleItemSave} />}
+        
       </React.Fragment>
     )
     return (
