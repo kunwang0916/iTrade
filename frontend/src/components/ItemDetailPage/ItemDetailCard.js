@@ -6,6 +6,7 @@ import {
   Avatar,
   List,
   Button,
+  Icon,
 } from 'antd';
 
 import {
@@ -20,8 +21,8 @@ class ItemDetailCard extends React.Component {
       item,
     } = this.props;
 
-    const images = item.images.map((image) => {
-      return <img alt="example" src={image} />
+    const images = item.images.map((image, index) => {
+      return <img alt="example" src={image} key={index}/>
     });
     const imageCover = (
       <Carousel autoplay>
@@ -61,16 +62,21 @@ class ItemDetailCard extends React.Component {
           description={item.description}
         />
         <Divider orientation="left">Seller Info:</Divider>
-        <Link to={'userProfile'}>
+        <Card
+          hoverable={true}
+          actions={[<Icon type="phone" />, <Icon type="message" />, <Icon type="mail" />]}
+        >
           <Card.Meta
             avatar={<Avatar src={item.user.avatar} />}
             title={item.user.name}
             description={item.user.description}
           />
+        </Card>
+        <Link to={'userProfile'}>
           <Button type="primary" block
             style={{ marginTop: marginTop }}
           >
-            Contact
+            User Details
           </Button>
         </Link>
         
