@@ -3,7 +3,12 @@ import React, {
 } from 'react';
 
 import BasicLayout from '../components/common/BasicLayout';
-import ItemForm from '../components/ItemEditPage/ItemForm';
+import ItemForm, { ItemFormMode } from '../components/ItemEditPage/ItemForm';
+import {
+  Spin,
+  notification,
+} from 'antd';
+import DatabaseUtils from '../utils/DatabaseUtils';
 
 
 const itemData = {
@@ -43,11 +48,37 @@ const itemData = {
   }
 }
 
-class ItemEditPage extends Component {
+class EditItemPage extends Component {
+  state = {
+    item: {},
+    loading: false,
+  }
+
+  handleItemChange = (item) => {
+    this.setState({ item });
+  }
+
+  handleItemSave = () => {
+    const { item } = this.state || {}
+    DatabaseUtils.saveItem(item);
+    notification.open({
+      message: 'save succeed',
+      description: 'user profile saved.'
+    })
+  }
+
   render() {
+    const {
+      item,
+      loading
+    } = this.state || {};
+
     const content = (
       <React.Fragment>
-        <ItemForm item={itemData} />
+        {loading ? <Spin /> : null}
+        <ItemForm item={item} mode={ItemFormMode.EDIT}
+          onChange={this.handleItemChange}
+          onSave={this.handleItemSave}/>
       </React.Fragment>
     )
     return (
@@ -56,4 +87,4 @@ class ItemEditPage extends Component {
   }
 }
 
-export default ItemEditPage;
+export default EditItemPage;

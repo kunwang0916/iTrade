@@ -64,11 +64,11 @@ class FirebaseUtils {
     })
   }
 
-  static saveItem(item, id = null) {
-    if (!id) {
-      id = uuidv1()
+  static saveItem(item) {
+    if (!item.id) {
+      item.id = uuidv1()
     }
-    const path = ITEM_TABLE_PATH + id;
+    const path = ITEM_TABLE_PATH + item.id;
     this.databaseRef(path).set(item);
   }
 }

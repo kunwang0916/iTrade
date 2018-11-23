@@ -10,7 +10,8 @@ import ItemDetailPage from './pages/ItemDetailPage';
 import UserProfilePage from './pages/UserProfilePage';
 import EditProfilePage from './pages/EditProfilePage';
 import MyItemsPage from './pages/MyItemsPage';
-import ItemEditPage from './pages/ItemEditPage';
+import EditItemPage from './pages/EditItemPage';
+import AddItemPage from './pages/AddItemPage';
 
 class App extends Component {
   render() {
@@ -24,7 +25,8 @@ class App extends Component {
           <Route path="/myProfile" component={EditProfilePage} />
           <Route path="/editProfile" component={EditProfilePage} />
           <Route path="/myItems" component={MyItemsPage} />
-          <Route path="/editItem" component={ItemEditPage} /> 
+          <Route path="/editItem" component={EditItemPage} /> 
+          <Route path="/addItem" component={AddItemPage} /> 
         </div>
       </Router>
     );

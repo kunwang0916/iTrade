@@ -10,8 +10,8 @@ class DatabaseUtils {
     FirebaseUtils.loadUserProfile(userId, callback);
   }
 
-  static saveItem(item, id=null) {
-
+  static saveItem(item) {
+    FirebaseUtils.saveItem(item);
   }
 
 }

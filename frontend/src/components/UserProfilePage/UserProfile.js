@@ -10,6 +10,7 @@ import {
   Link
 } from 'react-router-dom';
 
+import AccountUtils from '../../utils/AccountUtils';
 import ItemList from '../ItemListPage/ItemList';
 
 const userProfile = {
@@ -56,6 +57,29 @@ const userProfile = {
 }
 
 class UserProfile extends React.Component {
+
+  state = {
+    profile: null,
+    loading: false,
+  }
+
+  componentDidMount() {
+    this.loadUserProfile();
+  }
+
+  loadUserProfile() {
+    this.setState({
+      loading: true,
+    })
+
+    AccountUtils.loadProfile((profile) => {
+      this.setState({
+        loading: false,
+        profile: profile,
+      })
+    })
+  }
+
 
   render() {
     const avatarCover = (
