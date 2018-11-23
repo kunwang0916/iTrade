@@ -41,7 +41,7 @@ class AppHeader extends React.Component {
     if (AccountUtils.isLogIn()) {
       menuItems = [
         <Menu.Item key='user_profile'>
-          <Link to='/userProfile'>My Profile</Link>
+          <Link to='/myProfile'>My Profile</Link>
         </Menu.Item>,
         <Menu.Item key='my_items'>
           <Link to='/myItems'>My Items</Link>
@@ -63,6 +63,9 @@ class AppHeader extends React.Component {
       <Layout.Header style={{ textAlign: 'center', background: '#f0f2f5', color: '#333333', fontWeight: 'bold'}}>
         <Menu mode="horizontal">
           <Menu.SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting" />{title}</span>}>
+            <Menu.Item key='home'>
+              <Link to='/'>Home</Link>
+            </Menu.Item>
             {menuItems}
           </Menu.SubMenu>
         </Menu>

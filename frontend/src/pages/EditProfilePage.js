@@ -68,7 +68,7 @@ class EditProfilePage extends Component {
       </React.Fragment>
     )
     return (
-      <BasicLayout content={content} title={"Edit Profile"} />
+      <BasicLayout content={content} title={"My Profile"} />
     );
   }
 }

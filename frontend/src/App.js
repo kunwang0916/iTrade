@@ -21,6 +21,7 @@ class App extends Component {
           <Route exact path='/signIn' component={SignInPage} />
           <Route path="/itemDetail" component={ItemDetailPage} />
           <Route path="/userProfile" component={UserProfilePage} />
+          <Route path="/myProfile" component={EditProfilePage} />
           <Route path="/editProfile" component={EditProfilePage} />
           <Route path="/myItems" component={MyItemsPage} />
           <Route path="/editItem" component={ItemEditPage} /> 
