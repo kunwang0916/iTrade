@@ -14,7 +14,7 @@ class ItemList extends React.Component {
     return (
       <div style={{ maxWidth: '100vw', display: 'flex', textAlign: 'center' }}>
         <List
-          grid={{ gutter: 8, xs: 2, sm: 2, md: 2, lg: 2, xl: 2, xxl: 2 }}
+          grid={{ gutter: 0, xs: 2, sm: 2, md: 2, lg: 2, xl: 2, xxl: 2 }}
           split={true}
           dataSource={items}
           renderItem={item => (
