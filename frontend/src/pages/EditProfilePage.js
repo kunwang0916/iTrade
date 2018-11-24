@@ -11,7 +11,7 @@ import AccountUtils from '../utils/AccountUtils';
 class EditProfilePage extends Component {
 
   state = {
-    profile: null,
+    profile: {},
     loading: false,
   }
 
@@ -27,7 +27,7 @@ class EditProfilePage extends Component {
     AccountUtils.loadProfile((profile) => {
       this.setState({
         loading: false,
-        profile: profile,
+        profile: profile || {},
       })
     })
   }

@@ -126,7 +126,7 @@ class ProfileForm extends React.Component {
     )
 
     return (
-      <Form onSubmit={this.handleSubmit} layout='horizontal'
+      <Form layout='horizontal'
         style={{minWidth: '50vw'}}>
         <Form.Item
           {...formItemLayout}

@@ -59,7 +59,7 @@ const userProfile = {
 class UserProfile extends React.Component {
 
   state = {
-    profile: null,
+    profile: {},
     loading: false,
   }
 
