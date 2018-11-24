@@ -12,12 +12,13 @@ import EditProfilePage from './pages/EditProfilePage';
 import MyItemsPage from './pages/MyItemsPage';
 import EditItemPage from './pages/EditItemPage';
 import AddItemPage from './pages/AddItemPage';
+import ScrollToTop from './components/common/ScrollToTop';
 
 class App extends Component {
   render() {
     return (
       <Router basename={process.env.PUBLIC_URL}>
-        <div>
+        <ScrollToTop>
           <Route exact path="/" component={ItemListPage} />
           <Route exact path='/signIn' component={SignInPage} />
           <Route path="/itemDetail" component={ItemDetailPage} />
@@ -27,7 +28,7 @@ class App extends Component {
           <Route path="/myItems" component={MyItemsPage} />
           <Route path="/editItem" component={EditItemPage} /> 
           <Route path="/addItem" component={AddItemPage} /> 
-        </div>
+        </ScrollToTop>
       </Router>
     );
   }
