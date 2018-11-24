@@ -8,7 +8,39 @@ import {
   Icon,
 } from 'antd';
 
+import Lightbox from 'react-images';
+
 class ItemDetailCard extends React.Component {
+  state = {
+    openLightBox: false,
+    lightBoxIndex: 0,
+  }
+
+
+  onClickImage =(index)=> {
+    this.setState({
+      openLightBox: true,
+      lightBoxIndex: index,
+    });
+  }
+  
+  gotoPrevLightboxImage =()=> {
+    this.setState({
+      lightBoxIndex: this.state.lightBoxIndex - 1,
+    })
+  }
+
+  gotoNextLightboxImage =()=> {
+    this.setState({
+      lightBoxIndex: this.state.lightBoxIndex + 1,
+    })
+  }
+
+  handleCloseLightBox =()=> {
+    this.setState({
+      openLightBox: false,
+    });
+  }
 
   render() {
     const {
@@ -16,8 +48,13 @@ class ItemDetailCard extends React.Component {
     } = this.props;
 
     const images = item.images.map((image, index) => {
-      return <img alt="example" src={image} key={index}/>
+      return <img alt="example" src={image} key={index} onClick={()=>this.onClickImage(index)}/>
     });
+
+    const lightBoxImages = item.images.map((image) => {
+      return {src: image}
+    })
+
     const imageCover = (
       <Carousel autoplay>
         {images}
@@ -46,6 +83,14 @@ class ItemDetailCard extends React.Component {
         style={{ width: 400 }}
         cover={imageCover}
       >
+        <Lightbox 
+          images={lightBoxImages}
+          currentImage={this.state.lightBoxIndex}
+          onClickPrev={this.gotoPrevLightboxImage}
+          onClickNext={this.gotoNextLightboxImage}
+          isOpen={this.state.openLightBox}
+          onClose={this.handleCloseLightBox}
+        />
         <Divider orientation="left">Item Info:</Divider>
         <Card.Meta
           title={item.name}
