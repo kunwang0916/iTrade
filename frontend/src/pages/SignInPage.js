@@ -15,13 +15,16 @@ class SignInPage extends Component {
       signInSuccessUrl: '/',
       // We will display Google and Facebook as auth providers.
       signInOptions: [
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.TwitterAuthProvider.PROVIDER_ID,
       ]
     };
 
 
     const content = (
-      <div style={{ margin: '40vh 10vw' }}>
+      <div style={{ margin: '10vw auto 30vw auto'}}>
         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
       </div>
     )
