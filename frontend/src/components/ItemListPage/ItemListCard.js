@@ -24,7 +24,7 @@ class ItemListCard extends React.Component {
       <Link to={link}>
         <Card
           hoverable
-          style={{ width: 240, height: 350}}
+          style={{ width: 200, maxWidth: '40vw', height: 'auto'}}
           cover={<img alt="thumbnail" src={item.images[0]} />}
         >
           <Card.Meta
