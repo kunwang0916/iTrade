@@ -12,7 +12,7 @@ class ItemList extends React.Component {
   render() {
     const { items, type } = this.props || [];
     return (
-      <div style={{ maxWidth: '100vw', display: 'flex', textAlign: 'center' }}>
+      <div style={{ width: '500px', maxWidth: '100vw', display: 'flex', textAlign: 'center' }}>
         <List
           grid={{ gutter: 0, xs: 2, sm: 2, md: 2, lg: 2, xl: 2, xxl: 2 }}
           split={true}
