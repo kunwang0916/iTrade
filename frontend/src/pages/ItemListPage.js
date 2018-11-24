@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BasicLayout from '../components/common/BasicLayout';
-import ItemList from '../components/ItemListPage/ItemList';
+import ItemList, { ItemListType } from '../components/ItemListPage/ItemList';
 
 import DatabaseUtils from '../utils/DatabaseUtils';
 import { Spin } from 'antd';
@@ -32,7 +32,7 @@ class ItemListPage extends Component {
 
     const content = (
       <React.Fragment>
-        { loading ? <Spin /> : <ItemList items={items} /> }
+        { loading ? <Spin /> : <ItemList items={items} type={ItemListType.NORMAL_LIST}/> }
       </React.Fragment>
     )
     return (
