@@ -3,6 +3,10 @@ import {
   Layout,
   Menu,
   Icon,
+  Button,
+  Dropdown,
+  Row,
+  Col,
 } from 'antd';
 
 import {
@@ -59,16 +63,28 @@ class AppHeader extends React.Component {
       ]
     }
 
+    const menu = (
+      <Menu mode="horizontal">
+        <Menu.Item key='home'>
+          <Link to='/'>Home</Link>
+        </Menu.Item>
+        {menuItems}
+      </Menu>
+    )
+
     return (
-      <Layout.Header style={{ textAlign: 'center', background: '#f0f2f5', color: '#333333', fontWeight: 'bold'}}>
-        <Menu mode="horizontal">
-          <Menu.SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting" />{title}</span>}>
-            <Menu.Item key='home'>
-              <Link to='/'>Home</Link>
-            </Menu.Item>
-            {menuItems}
-          </Menu.SubMenu>
-        </Menu>
+      <Layout.Header style={{ background: '#fff'}}>
+        <Row gutter={16}>
+          <Col span={4} />
+          <Col span={16} style={{textAlign:'center'}}>
+            <h3>{title}</h3>
+          </Col>
+          <Col span={4} style={{ textAlign: 'right' }}>
+            <Dropdown overlay={menu} placement="bottomLeft">
+              <Button icon='setting'>Menu</Button>
+            </Dropdown>
+          </Col>
+        </Row>
       </Layout.Header>
     )
   }
