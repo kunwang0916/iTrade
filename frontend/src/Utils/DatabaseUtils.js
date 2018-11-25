@@ -12,8 +12,8 @@ class DatabaseUtils {
   }
 
   static saveItem(item, callback) {
-    item.user = AccountUtils.loadProfileFromLocal();
-    item.user.id = AccountUtils.getUserID();
+    item.user = AccountUtils.loadProfileFromLocal() || {};
+    item.user.id = AccountUtils.getUserID() || '';
     FirebaseUtils.saveItem(item, callback);
   }
 
