@@ -39,7 +39,7 @@ class MyItemsPage extends Component {
 
     const content = (
       <React.Fragment>
-        <Button type="primary" block style={{ marginBottom: '10pt' }}>
+        <Button type="primary" block style={{ margin: '10pt 0' }}>
           <Link to='addItem'>
           Add Item
           </Link>
