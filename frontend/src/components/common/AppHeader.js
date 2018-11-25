@@ -9,7 +9,8 @@ import {
 } from 'antd';
 
 import {
-  Link
+  Link,
+  withRouter,
 } from 'react-router-dom';
 
 import AccountUtils from '../../utils/AccountUtils';
@@ -23,6 +24,8 @@ class AppHeader extends React.Component {
   handleLogoutClick =()=> {
     AccountUtils.signOut();
     this.setState({ isLogIn: false });
+    // redirect to home page
+    this.props.history.push("/");
   }
 
   componentDidMount() {
@@ -56,7 +59,7 @@ class AppHeader extends React.Component {
       ]
     } else {
       menuItems = [
-        <Menu.Item key='sign_in' onClick={this.handleLogoutClick}>
+        <Menu.Item key='sign_in'>
           <Link to='/signIn'>Sign In</Link>
         </Menu.Item>
       ]
@@ -89,4 +92,4 @@ class AppHeader extends React.Component {
   }
 }
 
-export default AppHeader;
+export default withRouter(AppHeader);

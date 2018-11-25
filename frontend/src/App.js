@@ -17,7 +17,7 @@ import ScrollToTop from './components/common/ScrollToTop';
 class App extends Component {
   render() {
     return (
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router basename={"/iTrade"}>
         <ScrollToTop>
           <Route exact path="/" component={ItemListPage} />
           <Route exact path='/signIn' component={SignInPage} />
