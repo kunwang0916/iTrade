@@ -28,6 +28,10 @@ class AddItemPage extends Component {
         message: 'save succeed',
         description: 'user profile saved.'
       });
+
+      // redirect to my items page
+      this.props.history.push("/myItems");
+
       this.setState({item: newItem})
     });
   }

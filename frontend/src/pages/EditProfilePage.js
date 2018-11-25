@@ -43,6 +43,9 @@ class EditProfilePage extends Component {
       message: 'save succeed',
       description: 'user profile saved.'
     })
+
+    // redirect to home page
+    this.props.history.push("/");
   }
 
   render() {
