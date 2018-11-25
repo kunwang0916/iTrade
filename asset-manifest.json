@@ -1,15 +1,15 @@
 {
   "main.css": "/iTrade/static/css/main.25384052.chunk.css",
-  "main.js": "/iTrade/static/js/main.31cdf05b.chunk.js",
-  "main.js.map": "/iTrade/static/js/main.31cdf05b.chunk.js.map",
+  "main.js": "/iTrade/static/js/main.e443d9ec.chunk.js",
+  "main.js.map": "/iTrade/static/js/main.e443d9ec.chunk.js.map",
   "static/css/1.e5913263.chunk.css": "/iTrade/static/css/1.e5913263.chunk.css",
-  "static/js/1.504f01be.chunk.js": "/iTrade/static/js/1.504f01be.chunk.js",
-  "static/js/1.504f01be.chunk.js.map": "/iTrade/static/js/1.504f01be.chunk.js.map",
+  "static/js/1.4b371a25.chunk.js": "/iTrade/static/js/1.4b371a25.chunk.js",
+  "static/js/1.4b371a25.chunk.js.map": "/iTrade/static/js/1.4b371a25.chunk.js.map",
   "runtime~main.js": "/iTrade/static/js/runtime~main.b2af28f6.js",
   "runtime~main.js.map": "/iTrade/static/js/runtime~main.b2af28f6.js.map",
-  "static/css/1.e5913263.chunk.css.map": "/iTrade/static/css/1.e5913263.chunk.css.map",
   "static/css/main.25384052.chunk.css.map": "/iTrade/static/css/main.25384052.chunk.css.map",
+  "static/css/1.e5913263.chunk.css.map": "/iTrade/static/css/1.e5913263.chunk.css.map",
   "index.html": "/iTrade/index.html",
-  "precache-manifest.5b7d309679fe316f8291a120a7785301.js": "/iTrade/precache-manifest.5b7d309679fe316f8291a120a7785301.js",
+  "precache-manifest.52944ac14d4d94a91a30282c1da63d11.js": "/iTrade/precache-manifest.52944ac14d4d94a91a30282c1da63d11.js",
   "service-worker.js": "/iTrade/service-worker.js"
 }
